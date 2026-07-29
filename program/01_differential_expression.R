@@ -95,7 +95,7 @@ metadata$group <- factor(metadata$group, levels = c("LS", "HS"))
 stopifnot(identical(rownames(metadata), colnames(count)))
 
 ##  Differential Expression Analysis
-dds <- DESeqDataSetFromMatrix(countData = count, colData = metadata, design = ~ group + sex)
+dds <- DESeqDataSetFromMatrix(countData = count, colData = metadata, design = ~ group)
 dds <- DESeq(dds)
 res <- results(dds, contrast = c("group", "HS", "LS"))
 res <- data.frame(res)
